@@ -1,0 +1,188 @@
+﻿[
+  {
+    "SourceTableName": "X_BCG_CASTER",
+    "DesntiationTableName": "X_BCG_AOD ",
+    "SourceTableQuery": "SELECT ROWID, HEAT_NO,  DATETIME,  SERIES,  GRADE,  AOD_LIFE,  HEAT_IN_MONTH,  MAKE,  LDL_NO,  MELTER,  SHIFT,  TR_LQM,  AIM_LQM,  SS_ENDCUT,  TUND_JAM,  TOT_LM,  BLD_UP,  OPN_TMP,  O2,  N2,  AR,  EXTRA_AR,  O2_MT,  N2_MT,  AR_MT,  C,  MN,  S,  P,  SI,  NI,  CR,  CU,  MO,  C_1,  MN_1,  CR_1,  TMPR,  C_2,  MN_2,  S_2,  P_2,  SI_2,  NI_2,  CR_2,  CU_2,  MO_2,  N2_2,  AL2O3,  CAO,  CR2O3,  FE2O3,  MGO,  MNO,  SIO2,  BASICITY,  DLIME_78,  LINE_56,  SPAR_15,  SPAR_16,  TOT_FLUX,  ACT_REQ,  EXCESS_QYT,  DLIME_MT,  LIME_MT,  SPAR_MT,  TOT_FLX,  PURE_NI,  MN_METAL,  UTILITY_NI,  FENI_13,  PER_NI,  FENI_14,  PER_NI_1,  FENI_OUT,  PER_NI_3,  PURE_CU,  S70_30,  S90_10,  IMPLR,  SS_FILTER,  MONEL,  KULFI,  MS_SCRP,  DRI_1,  DRI_2,  NI_CU_SCRP,  HCFECR_11,  PER_CR,  HCFECR_12,  PER_CR1,  HCFEMN9,  HCFEMN10,  BUSHLING,  P_IRON,  SAF,  MIX_MAT15,  MO_CONCT,  MC_FEMN,  P90_10,  IMPLR_KUL,  FEMO,  NIMO_SINTR,  CAMO,  CAMO_HF,  MO03,  FENIMO,  FESI,  FESI15,  HGFESI,  SI_MTL,  MCSIMN_3,  MCSIMN_13,  MCSIMN_OUTS,  LCSIMN,  ALBAR_SHOT,  SLOFF_TMP,  IP_MN,  OP_MN,  MN_RECOV,  PUR_SI,  PURE_SIAL,  SI_RATE,  SI_RATE_AL,  DCR,  CR_RECOV,  NI_RECOV,  MO_RECOV,  CRE,  CLOAD,  AOD_STRT,  AOD_END,  PRC_TM,  TTT,  DELAY,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') AS FDATE,  TO_CHAR(TIMESTAMP,'HH24MMSS') AS FTIME FROM X_BCG_AOD where :NUMBEROFROWS <= :NUMBEROFROWS and :STS = ::STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": "::STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VegamDb",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "S"
+  },
+  {
+    "SourceTableName": "X_BCG_DRI",
+    "DesntiationTableName": "X_BCG_DRI",
+    "SourceTableQuery": "SELECT ROWID,SL_NO,  HEAT_NO,  DATETIME,  SHIFT,  HEAT_TYPE,  SERIES,  GRADE,  NO_OF_BASKETS,  LIQUID_STEEL,  SETUP_START,  ARC_START,  ARC_END,  TAP_START,  TAP_END,  TTT,  VCB_TIME,  BRK_ON_DUR,  TAP_TMP,  ENERGY,  O2_NM3,  SP_OXY_CONS,  LIME,  DOLO,  SP_FLUX,  FECR_FINES,  HC_FECR10_150,  MHS_FECR,  PWR_LFECR_TAKEN,  LIQFECR,  SAF,  G_DUST,  REVERT,  CISLAGPOT,  INGOT_BRQT,  HARSCO,  UTENSIL,  SSREVERT,  TURNING,  OTHERSS,  HMS,  MS_HP_STORED,  MS_LP_BNDL,  LMS,  DRI,  PIG_IRON,  CR_BUNDLE,  CUNI,  FENI,  FENIMO,  CHG_CR,  TOT_CHG,  YELD,  CHG_COK,  IP_PURE_CR,  IP_PURE_NI,  FESI_LMP,  FESI_FINE,  ALMIX_BRQT,  ALMIX,  SP_REDUCTANT,  DOLO_CHIPS,  ANTH_E_COAL,  CPC,  TEMP_TIPS,  ELECTRODE_POS,  ELECTRODE_CHANGE,  ELECTRODE_BREAK,  ELECTRODE_REUSE,  ELECTRODE_LEN,  AVG_ELECTRODE_WT,  BLNK_COL,  ELECTRODE_SUPPLIER,  GUN_MAS,  ANKR_HRT,  WALL_LIFE,  DELTA_LIFE,  BOT_LIFE,  DPP_LIFE,  C,  MN,  SI,  NI,  CR,  P,  CHG_SUPV,  MELTER,  LDL_LIFE,  TL_NO,  EXP_YELD,  ACT_YELD,  EXP_POWER,  ACT_POWER,  EXP_SP_POWER,  ACT_SP_POWER,  TRG_EX_POWER,  TRG_SP_POWER,  BOILING,  REMARKS,  EXPCT_CR,  ACHIV_CR,  DEV_IN_CR,  EXP_NI,  ACHIV_NI,  DEV_IN_NI,  SLG_TYPE,  BOIL,  REMARK,  SAP_CL,  SAPC2L_YELD,  AMT_ADJ,  CR_REC,  NI_REC,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') as FDATE,  TO_CHAR(TIMESTAMP,'HH24MISS') as FTIME FROM X_BCG_DRI WHERE :NUMBEROFROWS <= :NUMBEROFROWS AND :STS = ::STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": ":STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VEGAMDB",
+    "CopyType": "S",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ]
+  },
+  {
+    "SourceTableName": "X_BCG_EAF",
+    "DesntiationTableName": "X_BCG_EAF",
+    "SourceTableQuery": "SELECT ROWID, SL_NO,  HEAT_NO,  DATETIME,  SHIFT,  HEAT_TYPE,  SERIES,  GRADE,  NO_OF_BASKETS,  LIQUID_STEEL,  SETUP_START,  ARC_START,  ARC_END,  TAP_START,  TAP_END,  TTT,  VCB_TIME,  BRK_ON_DUR,  TAP_TMP,  ENERGY,  O2_NM3,  SP_OXY_CONS,  LIME,  DOLO,  SP_FLUX,  FECR_FINES,  HC_FECR10_150,  MHS_FECR,  PWR_LFECR_TAKEN,  LIQFECR,  SAF,  G_DUST,  REVERT,  CISLAGPOT,  INGOT_BRQT,  HARSCO,  UTENSIL,  SSREVERT,  TURNING,  OTHERSS,  HMS,  MS_HP_STORED,  MS_LP_BNDL,  LMS,  DRI,  PIG_IRON,  CR_BUNDLE,  CUNI,  FENI,  FENIMO,  CHG_CR,  TOT_CHG,  YELD,  CHG_COK,  IP_PURE_CR,  IP_PURE_NI,  FESI_LMP,  FESI_FINE,  ALMIX_BRQT,  ALMIX,  SP_REDUCTANT,  DOLO_CHIPS,  ANTH_E_COAL,  CPC,  TEMP_TIPS,  ELECTRODE_POS,  ELECTRODE_CHANGE,  ELECTRODE_BREAK,  ELECTRODE_REUSE,  ELECTRODE_LEN,  AVG_ELECTRODE_WT,  BLNK_COL,  ELECTRODE_SUPPLIER,  GUN_MAS,  ANKR_HRT,  WALL_LIFE,  DELTA_LIFE,  BOT_LIFE,  DPP_LIFE,  C,  MN,  SI,  NI,  CR,  P,  CHG_SUPV,  MELTER,  LDL_LIFE,  TL_NO,  EXP_YELD,  ACT_YELD,  EXP_POWER,  ACT_POWER,  EXP_SP_POWER,  ACT_SP_POWER,  TRG_EX_POWER,  TRG_SP_POWER,  BOILING,  REMARKS,  EXPCT_CR,  ACHIV_CR,  DEV_IN_CR,  EXP_NI,  ACHIV_NI,  DEV_IN_NI,  SLG_TYPE,  BOIL,  REMARK,  SAP_CL,  SAPC2L_YELD,  AMT_ADJ,  CR_REC,  NI_REC,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') as FDATE,  TO_CHAR(TIMESTAMP,'HH24MISS') as FTIME FROM X_BCG_EAF WHERE ROWNUM <= :NUMBEROFROWS AND STS=:STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": ":STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VEGAMDB",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "S"
+  },
+  {
+    "SourceTableName": "X_BCG_GRINDER",
+    "DesntiationTableName": "X_BCG_GRINDER",
+    "SourceTableQuery": "SELECT ROWID,SL_NO,  DATETIME,  SLB_BLMID,  BATCH,  HEATID,  GRADE,  SERIES,  SLAB_BLMTYPE,  SLB_BLMNO,  LENGTH,  GRD_TYP,  CON_SLBBLN,  GRD_LOSS,  PER_GRDLOSS,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') as FDATE,    TO_CHAR(TIMESTAMP,'HH24MISS') as FTIME FROM X_BCG_GRINDER WHERE ROWNUM <= :NUMBEROFROWS AND STS=:STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": ":STS",
+        "RelationalOperator": "=",
+        "DBTypeEnumValue": 11,
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VEGAMDB",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "S"
+  },
+  {
+    "SourceTableName": "X_BCG_LF",
+    "DesntiationTableName": "X_BCG_LF",
+    "SourceTableQuery": "SELECT ROWID,SL_NO,  HEAT_NO,  DATETIME,  SERIES,  GRADE,  MELTER,  SFT_INCH,  TR_LQM,  F_LQM,  LDLNO_LIFE,  L_ARR,  D_DEP,  PRC_TM,  I_C,  I_MN,  I_S,  I_P,  I_SI,  I_NI,  I_CR,  I_CU,  I_MO,  I_N,  F_C,  F_MN,  F_S,  F_P,  F_SI,  F_NI,  F_CR,  F_CU,  F_MO,  F_N,  F_TI,  NO_OF_SMPL,  LFT_TMP,  SEQNO,  NO_OF_THMCPL,  SI_2,  PER_FER,  N2_PURG,  AR_PURG,  SUP_HEAT,  BLANK_CLM,  LIME,  FSPAR,  HCFEN,  MCSIMN,  MN_METAL,  FESI,  HGFESI,  HC_FECR,  NI,  FENI_35,  FENI_25,  UTL_NI,  CU,  FEMO,  TI_SPONGE,  PER_70,  PER_30,  MS_BD,  SS_BD,  INGT_NI5,  JAM310S,  SS_FILTER,  SS_INGOT,  COIL304,  END_CUT,  TOT_MET_ADD,  PER_METADD,  PWR,  PW_TON,  W1,  W2,  W3,  W4,  W5,  CAST_SPD,  ELECT_ADD,  SLAG_VOL,  REMARK,  DLY,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') as FDATE,    TO_CHAR(TIMESTAMP,'HH24MISS') as FTIME FROM X_BCG_LF WHERE ROWNUM <= :NUMBEROFROWS AND STS=:STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": ":STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VEGAMDB",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "S"
+  },
+  {
+    "SourceTableName": "X_BCG_CASTER",
+    "DesntiationTableName": "X_BCG_CASTER",
+    "SourceTableQuery": "SELECT ROWID,HEATID,  SLAB_TYPE,  SLB_SEC,  MLD_JKT_NO,  WIDER_LIFE,  NARROW_LIFE,  CAST_PWDR,  LANC_PIPE,  SEN_DIP,  MLC,  LEN_LDL_CONN,  TUND_WT_CON,  REMARKS,  OK_NOK,  TAPER_CHNG,  SEN_RAMPING,  CAST_SPD_REM,  DEFECTS,  SLEN,  CAST_LEN,  SEQ_NO,  SLBWGHT,  COLD1,  COLD2,  COLD3,  :STS,  TO_CHAR(TIMESTAMP,'YYYYMMDD') as FDATE,    TO_CHAR(TIMESTAMP,'HH24MISS') as FTIME  FROM X_BCG_CASTER WHERE ROWNUM <= :NUMBEROFROWS AND STS = :STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":NUMBEROFROWS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 100
+      },
+      {
+        "ColumnName": ":STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": 0
+      }
+    ],
+    "La:STSyncDate": 0,
+    "La:STSyncTime": 0,
+    "SourceDbConnectionStringName": "JSLDB",
+    "DestinationDbConnectionStringName": "VEGAMDB",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": ":STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "S"
+  }
+]

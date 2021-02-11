@@ -1,0 +1,71 @@
+﻿[
+  {
+    "SourceTableName": "LDB1_HMI_CONTROLIMAGE",
+    "DesntiationTableName": "LDB1_HMI_CONTROLIMAGE1 ",
+    "SourceTableQuery": "SELECT rowid,FCONTROLID,  FGROUPID,  FDISPLAYNAME,  FIMAGECLASSNAME,  FIMAGEFILENAME,  FISPRIVATE,  FIMAGEMINWIDTH,  FIMAGEMINHEIGHT,  FSTATUS,  FCREATEDBY,  FCREATEDON,  FUPDATEDBY,  FUPDATEDON,  FTIMESTAMP,  FDATATYPE,  FISANIMATEDDEVICE,  FIMAGETYPE,  FJSFILENAME,  STS FROM LDB1_HMI_CONTROLIMAGE WHERE ROWNUM<=:ROWNUMBER AND STS=:STS",
+    "filterConditions": [
+      {
+        "ColumnName": ":ROWNUMBER",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 7
+      },
+      {
+        "ColumnName": ":STS",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": 0
+      }
+    ],
+    "LastSyncDate": 0,
+    "LastSyncTime": 0,
+    "SourceDbConnectionStringName": "VegamDbConnectionstring",
+    "DestinationDbConnectionStringName": "VegamDbConnectionstring",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": "STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "0"
+  },
+  {
+    "SourceTableName": "JOB_HISTORY",
+    "CopierId": 1,
+    "DesntiationTableName": "JOB_HISTORY1 ",
+    "SourceTableQuery": "SELECT * FROM (SELECT EMPLOYEE_ID, TO_CHAR(START_DATE,'YYYYMMDD') AS FDATE, TO_CHAR(START_DATE,'HH24MISS') AS FTIME,JOB_ID, DEPARTMENT_ID FROM JOB_HISTORY WHERE Start_date > TO_DATE(:FDATE || :FTIME,'YYYYMMDDHH24MISS') ORDER BY START_DATE ASC)  WHERE rowNUM <=:ROWNUMBER",
+    "filterConditions": [
+      {
+        "ColumnName": ":ROWNUMBER",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "<=",
+        "Value": 2
+      },
+      {
+        "ColumnName": ":FDATE",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": "2004010101"
+      },
+      {
+        "ColumnName": ":FTIME",
+        "DBTypeEnumValue": 11,
+        "RelationalOperator": "=",
+        "Value": "020202"
+      }
+    ],
+    "LastSyncDate": 0,
+    "LastSyncTime": 0,
+    "SourceDbConnectionStringName": "VegamDbConnectionstring",
+    "DestinationDbConnectionStringName": "VegamDbConnectionstring",
+    "UpdateFieldAfterInsert": [
+      {
+        "ColumnName": "STS",
+        "Value": 1,
+        "DBTypeEnumValue": 11
+      }
+    ],
+    "CopyType": "0"
+  }
+]

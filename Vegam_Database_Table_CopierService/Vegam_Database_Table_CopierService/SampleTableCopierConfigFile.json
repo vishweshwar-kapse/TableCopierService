@@ -1,0 +1,91 @@
+{
+  "TableCopierID": "Unique ID For Table Copier Config. Integer Value",
+  "SourceTableName": "Source Table Name",
+  "DesntiationTableName": "Destnation Table Name",
+  "SourceTableSelectQuery": "Select Query to fetch data",
+  "SourceTableSelectFilters": "Filters needs to be used in the query",
+  "SourceDbConnectionStringName": "Source DB Conncection String [It should be configured in app.config]",
+  "DestinationDbConnectionStringName": "Destination DB Conncection String [It should be configured in app.config]",
+  "SourceTableUpdateFilters": "Filters needs to be used to update source table after copying data",
+  "UpdateDestinationTableIfDataAlreadyExists": "Flag to tell whether to check for record existance while inserting to destination table",
+  "DestinationTablePrimaryKeyFieldList": "Array containing the primary key fields",
+  "DestinationTableUpdateConditions": "List of column names corresponding values to be checked for valid updates",
+  "CopyType": "Type of Table Copy - 0-StatusBased,1-SequenceBased,2-TimeStampBased",
+  "Status": "Status to check whether record should be considered for copying (A-Active,I-Inactive)"
+}
+
+/* Conditions to be checked*/
+/* For Time Stamp based copying always select date and time in FDATEVAL and FTIMEVAL field in the source table select query. Without this copying will not work*/
+/* For Status based copying always need to select ROWID value in the source table selet query. Using this only the status value is updated in source table after copying*/
+/* An array of below object needs to be populated for SourceTableSelectFilters, SourceTableUpdateFilters and DestinationTableUpdateConditions
+  
+  {string ColumnName
+  int DBTypeEnumValue
+  object Value}
+
+
+*/
+
+/* DestinationTableUpdateConditions values will be compared as only string. If other datatype value is provided, then it is converted to string and compare */
+
+/* DBTypeEnumValue should be populated using the corresponding numeric value from below list
+
+        AnsiString = 0,
+        Binary = 1,
+        Byte = 2,
+        Boolean = 3,
+        Currency = 4,
+        Date = 5,
+        DateTime = 6,
+        Decimal = 7,
+        Double = 8,
+        Guid = 9,
+        Int16 = 10,
+        Int32 = 11,
+        Int64 = 12,
+        Object = 13,
+        SByte = 14,
+        Single = 15,
+        String = 16,
+        Time = 17,
+        UInt16 = 18,
+        UInt32 = 19,
+        UInt64 = 20,
+        VarNumeric = 21,
+        AnsiStringFixedLength = 22,
+        StringFixedLength = 23,
+        Xml = 25,
+        DateTime2 = 26,
+        DateTimeOffset = 27
+
+*/
+
+
+{
+  "TableCopierID": 1,
+  "SourceTableName": "L3EXTERNAL.EXT_MILLL3PDIREQ",
+  "DesntiationTableName": "JSLMIIADMIN.EXT_MILLL3PDIREQ",
+  "SourceTableSelectQuery": "SELECT COUNTER,SYSTIME,L3SLABID,ACCESSFLAG,TOC,TOM,MOP,TO_CHAR(DECODE(TOM,NULL,TOC,TOM),'YYYYMMDD') AS FDATEVAL,TO_CHAR(DECODE(TOM,NULL,TOC,TOM),'HH24MISS') AS FTIMEVAL FROM L3EXTERNAL.EXT_MILLL3PDIREQ WHERE DECODE(TOM,NULL,TOC,TOM) >= TO_DATE(TO_CHAR(:FDATE)||LPAD(TO_CHAR(:FTIME),6,'0'),'YYYYMMDDHH24MISS') ORDER BY DECODE(TOM,NULL,TOC,TOM) ASC",
+  "SourceTableSelectFilters": [
+    {
+      "ColumnName": ":FDATE",
+      "DBTypeEnumValue": 11,
+      "Value": "20180501"
+    },
+    {
+      "ColumnName": ":FTIME",
+      "DBTypeEnumValue": 11,
+      "Value": "000000"
+    }
+  ],
+  "SourceDbConnectionStringName": "JSLHSML2DBConection",
+  "DestinationDbConnectionStringName": "VegamMIIDBConnection",
+  "SourceTableUpdateFilters": [],
+  "UpdateDestinationTableIfDataAlreadyExists": "Y",
+  "DestinationTablePrimaryKeyFieldList": [
+    "COUNTER",
+    "SYSTIME"
+  ],
+  "CopyType": 2,
+  "Status": "I"
+}
